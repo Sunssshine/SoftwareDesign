@@ -1,4 +1,8 @@
 #include "container/BinaryTree.h"
+#include "shapes/Circle.h"
+
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 int main(int argc, char **argv)
 {
@@ -10,6 +14,11 @@ int main(int argc, char **argv)
 //    BinaryTree<TreeNode<int>> tree(node0);
 //    tree.print_klp();
 
+    Circle c(Point(2,1), 1);
+
+    c.scale(1.25);
+
+    std::cout << c.center().x << ' ' << c.center().y << ' ' << c.radius() << std::endl;
 
     return 0;
 }
