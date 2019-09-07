@@ -1,19 +1,18 @@
-//
-// Created by dmo on 07.09.2019.
-//
-
-#include "Ellipse.h"
 #include <cmath>
+#include "Ellipse.h"
 
-Ellipse::Ellipse() : center_(Point()), radius_1_(1), radius_2_(2), angle_(0){}
+Ellipse::Ellipse() : Shape(), radius_1_(1), radius_2_(2){}
 
-Ellipse::Ellipse(float r_1, float r_2) : center_(Point()), radius_1_(r_1), radius_2_(r_2), angle_(0){}
+Ellipse::Ellipse(float r_1, float r_2) : Shape(), radius_1_(r_1), radius_2_(r_2) {}
 
-Ellipse::Ellipse(Point center, float r_1, float r_2): center_(center), radius_1_(r_1), radius_2_(r_2), angle_(0) {}
+Ellipse::Ellipse(Point center, float r_1, float r_2): Shape(center), radius_1_(r_1), radius_2_(r_2) {}
 
 void Ellipse::scale(float value) {
-    radius_1_ *= value;
-    radius_2_ *= value;
+    if (value > 0)
+    {
+        radius_1_ *= value;
+        radius_2_ *= value;
+    }
 }
 
 void Ellipse::scale_r1(float value) {
@@ -39,8 +38,9 @@ void Ellipse::move(Point new_base) {
 }
 
 std::string Ellipse::get_info() {
-    return std::string("Circle. Center:") + std::to_string(center_.x) +
-           std::string(", ") + std::to_string(center_.y) +
-           std::string("; radius_1: ") + std::to_string(radius_1_) +
-            std::string("; radius_2: ") + std::to_string(radius_2_);
+    return std::string("Ellipse. Center:") + center_ +
+           "; radius_1: " + std::to_string(radius_1_) +
+           "; radius_2: " + std::to_string(radius_2_) +
+           "; angle: " + std::to_string(angle_);
+
 }

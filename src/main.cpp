@@ -1,8 +1,11 @@
-#include "container/BinaryTree.h"
-#include "shapes/Circle.h"
-
 #define _USE_MATH_DEFINES
 #include <cmath>
+
+#include "container/BinaryTree.h"
+
+#include "shapes/Circle.h"
+#include "shapes/Ellipse.h"
+#include "shapes/Text.h"
 
 int main(int argc, char **argv)
 {
@@ -14,11 +17,23 @@ int main(int argc, char **argv)
 //    BinaryTree<TreeNode<int>> tree(node0);
 //    tree.print_klp();
 
-    Circle c(Point(2,1), 1);
+//    Shape *shape_0 = new Circle(Point(1,2), 1.5);
+    Shape *shape_1 = new Ellipse(Point(1,2), 1, 2);
+//    Shape *shape_2 = new Text("test", 8);
 
-    c.scale(1.25);
+//    std::cout << shape_0->get_info() << std::endl;
+    std::cout << shape_1->get_info() << std::endl;
 
-    std::cout << c.center().x << ' ' << c.center().y << ' ' << c.radius() << std::endl;
+    shape_1->move(Point(10,12));
+
+    shape_1->rotate(float(M_PI_2));
+
+
+    std::cout << shape_1->get_info() << std::endl;
+
+//    delete shape_0;
+    delete shape_1;
+//    delete shape_2;
 
     return 0;
 }
