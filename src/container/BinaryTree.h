@@ -16,8 +16,7 @@ class BinaryTree {
 public:
     explicit BinaryTree(T *base): root_(base){}
 
-    T* root() { return root_; }
-
+    T* root() const { return root_; }
     void print_klp();
     void clear(T* node);
     ~BinaryTree();
