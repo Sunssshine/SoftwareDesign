@@ -3,7 +3,9 @@
 
 #include "Shape.h"
 
-class Ellipse : public Shape {
+
+class Ellipse : virtual public Shape {
+protected:
     float radius_1_;
     float radius_2_;
 public:
@@ -13,9 +15,6 @@ public:
     void scale(float value) override;
     void scale_r1(float value);
     void scale_r2(float value);
-    void rotate(float angle) override;
-    void rotate(Point axis, float angle) override;
-    void move(Point new_base) override;
 
     float &radius_1() { return radius_1_;}
     const float &radius_1() const { return radius_1_;}

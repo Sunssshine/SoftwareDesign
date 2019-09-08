@@ -3,7 +3,7 @@
 
 #include "Shape.h"
 
-class Circle : public Shape {
+class Circle : virtual public Shape {
     float radius_;
 public:
     explicit Circle();
@@ -12,7 +12,7 @@ public:
     void scale(float value) override;
     void rotate(float angle) override;
     void rotate(Point axis, float angle) override;
-    void move(Point new_base) override;
+//    void move(Point new_base) override;
 
     float &radius() { return radius_;}
     const float &radius() const { return radius_;}

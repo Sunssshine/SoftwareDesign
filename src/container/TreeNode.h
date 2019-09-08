@@ -6,24 +6,23 @@
 #define SOFTWARE_DESIGN_TREENODE_H
 
 #include <utility>
+//#include <hwloc/inlines.h
+#include <type_traits>
+
 
 template<typename T>
 class TreeNode{
     T elem_;
     TreeNode *left_;
     TreeNode *right_;
-    TreeNode *parent_;
 public:
-    explicit TreeNode(T base, TreeNode *parent=nullptr);
-    TreeNode(T base, TreeNode *elem, bool is_right = false, TreeNode *parent = nullptr);
-    TreeNode(T base, TreeNode* left, TreeNode* right, TreeNode *parent=nullptr);
+    explicit TreeNode(T base);
+    TreeNode(T base, TreeNode *elem, bool is_right = false);
+    TreeNode(T base, TreeNode* left, TreeNode* right);
 
     T &elem();
     const T &elem() const;
     void elem(T base);
-
-    TreeNode *&parent();
-    const TreeNode *&parent() const;
 
     TreeNode *left();
     void left(T left);
@@ -32,28 +31,25 @@ public:
     TreeNode *right();
     void right(T right);
     void right(TreeNode *right);
-
+     ~TreeNode();
 };
 
 template<typename T>
-TreeNode<T>::TreeNode(T base, TreeNode *parent) : elem_(base), left_(nullptr), right_(nullptr), parent_(parent){}
+TreeNode<T>::TreeNode(T base) : elem_(base), left_(nullptr), right_(nullptr){}
 
 template<typename T>
-TreeNode<T>::TreeNode(T base, TreeNode* left, TreeNode* right, TreeNode *parent) :
-        elem_(base), left_(left), right_(right), parent_(parent){}
+TreeNode<T>::TreeNode(T base, TreeNode* left, TreeNode* right) : elem_(base), left_(left), right_(right){}
 
 template<typename T>
-TreeNode<T>::TreeNode(T base, TreeNode *elem, bool is_right, TreeNode *parent) : elem_(base), parent_(parent) {
+TreeNode<T>::TreeNode(T base, TreeNode *elem, bool is_right) : elem_(base) {
     if (is_right)
     {
         left_ = nullptr;
         right_ = elem;
-        right_->parent_ = this;
     }
     else
     {
         left_ = elem;
-        left_->parent_ = this;
         right_ = nullptr;
     }
 }
@@ -68,33 +64,29 @@ template<typename T>
 void TreeNode<T>::elem(T base) { elem_ = base; }
 
 template<typename T>
-TreeNode<T> *&TreeNode<T>::parent() { return parent_; }
-
-template<typename T>
-const TreeNode<T> *&TreeNode<T>::parent() const { return parent_; }
-
-template<typename T>
 TreeNode<T> *TreeNode<T>::left() { return left_; }
 
 template<typename T>
-void TreeNode<T>::left(T left) { left_ = new TreeNode<T>(left, this); }
+void TreeNode<T>::left(T left) { left_ = new TreeNode<T>(left); }
 
 template<typename T>
 void TreeNode<T>::left(TreeNode *left) {
-    left_ = left;
-    left_->parent_ = this;
-}
+    left_ = left;}
 
 template<typename T>
 TreeNode<T> *TreeNode<T>::right() { return right_; }
 
 template<typename T>
-void TreeNode<T>::right(T right) { right_ = new TreeNode<T>(right, this); }
+void TreeNode<T>::right(T right) { right_ = new TreeNode<T>(right); }
 
 template<typename T>
 void TreeNode<T>::right(TreeNode *right) {
     right_ = right;
-    right_->parent_ = this;
+}
+
+template<typename T>
+TreeNode<T>::~TreeNode() {
+    delete(elem_);
 }
 
 #endif //SOFTWARE_DESIGN_TREENODE_H

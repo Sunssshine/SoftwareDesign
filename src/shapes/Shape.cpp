@@ -34,3 +34,17 @@ const Point &Shape::center() const { return center_; }
 float &Shape::angle() { return angle_; }
 
 const float &Shape::angle() const { return angle_; }
+
+void Shape::rotate(float angle) {
+    angle_ += angle;
+}
+
+void Shape::rotate(Point axis, float angle) {
+    center_ = Point{(center_.x - axis.x) * std::cos(angle) - (center_.y - axis.y) * std::sin(angle) + axis.x,
+                    (center_.x - axis.x) * std::sin(angle) + (center_.y - axis.y) * std::cos(angle) + axis.y};
+    angle_ += angle;
+}
+
+void Shape::move(Point new_base) {
+    center_ = new_base;
+}

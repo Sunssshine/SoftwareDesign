@@ -7,42 +7,39 @@
 #include "shapes/Circle.h"
 #include "shapes/Ellipse.h"
 #include "shapes/Text.h"
+#include "shapes/TextInEllipse.h"
 
-typedef TreeNode<int> nodeType;
+typedef TreeNode<Shape *> nodeType;
 
 int main(int argc, char **argv)
 {
-    nodeType *node1 = new nodeType(1);
-    nodeType *node2 = new nodeType(5);
-    nodeType *node0 = new nodeType(0, node1, node2);
+    Shape *shape_0 = new Circle(Point(1,2), 1.5);
+    Shape *shape_1 = new Ellipse(Point(1,2), 1, 2);
+    Shape *shape_2 = new Text("test", 8);
+    Shape *shape_3 = new TextInEllipse("test", 8, Point(1, 2), 2, 3);
 
-    node1->left(new nodeType(2));
-    node2->right(new nodeType(6));
+    nodeType *node1 = new nodeType(shape_0);
+    nodeType *node2 = new nodeType(shape_1);
+    nodeType *node0 = new nodeType(shape_2, node1, node2);
 
+//
+    node1->left(shape_3);
+//    node2->right(new nodeType(6));
+//
     BinaryTree<nodeType> tree(node0);
-    tree.print_klp();
-    std::cout << std::endl;
+//    tree.print_klp();
+//    std::cout << std::endl;
     BinaryTreeIterator<nodeType> iter(tree);
 //    std::cout << iter.has_next();
     while(iter.has_next())
-        std::cout << iter.next()->elem() << ' ';
-//    Shape *shape_0 = new Circle(Point(1,2), 1.5);
-//    Shape *shape_1 = new Ellipse(Point(1,2), 1, 2);
-//    Shape *shape_2 = new Text("test", 8);
+        std::cout << iter.next()->elem()->get_info() << std::endl;
 
-//    std::cout << shape_0->get_info() << std::endl;
-//    std::cout << shape_1->get_info() << std::endl;
-//
-//    shape_1->move(Point(10,12));
-//
-//    shape_1->rotate(float(M_PI_2));
-//
-//
-//    std::cout << shape_1->get_info() << std::endl;
+
 //
 //    delete shape_0;
 //    delete shape_1;
 //    delete shape_2;
+//    delete shape_3;
 
 
     return 0;

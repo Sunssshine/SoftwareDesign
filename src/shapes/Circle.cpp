@@ -17,10 +17,6 @@ void Circle::rotate(Point axis, float angle) {
                     (center_.x - axis.x) * std::sin(angle) + (center_.y - axis.y) * std::cos(angle) + axis.y};
 }
 
-void Circle::move(Point new_base) {
-    center_ = new_base;
-}
-
 std::string Circle::get_info() {
     return std::string("Circle. Center:") + center_ +
            std::string("; radius: ") + std::to_string(radius_) +

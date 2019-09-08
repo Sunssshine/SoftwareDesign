@@ -4,21 +4,21 @@
 #include <string>
 #include "Shape.h"
 
-class Text : public Shape {
+class Text : virtual public Shape {
+protected:
     std::string text_;
     size_t font_size_;
 public:
     Text(std::string text);
     Text(std::string text, size_t font_size );
 
+    size_t &font_size();
+    const size_t &font_size() const;
+
     std::string & text();
     const std::string & text() const;
 
     void scale(float value) override;
-    void rotate(float angle) override;
-    void rotate(Point axis, float angle) override;
-
-    void move(Point new_base) override;
 
     std::string get_info() override;
 };

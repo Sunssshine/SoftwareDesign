@@ -8,6 +8,6 @@ set(SRC src/main.cpp
         src/shapes/Shape.h src/shapes/Shape.cpp
         src/shapes/Circle.cpp  src/shapes/Circle.h
         src/shapes/Ellipse.cpp src/shapes/Ellipse.h
-        src/shapes/Text.cpp src/shapes/Text.h src/container/BinaryTreeIterator.h)
+        src/shapes/Text.cpp src/shapes/Text.h src/container/BinaryTreeIterator.h src/shapes/TextInEllipse.cpp src/shapes/TextInEllipse.h)
 
 add_executable(software_design ${SRC})

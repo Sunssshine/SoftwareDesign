@@ -20,7 +20,7 @@ struct Point{
     friend std::string operator+(const std::basic_string<char>& string, Point point);
 };
 
-class Shape{
+class Shape {
 protected:
     Point center_;
     float angle_;
@@ -36,9 +36,9 @@ public:
     virtual const float &angle() const;
 
     virtual void scale(float value) = 0;
-    virtual void rotate(float angle) = 0;
-    virtual void rotate(Point axis, float angle) = 0;
-    virtual void move(Point new_base) = 0;
+    virtual void rotate(float angle);
+    virtual void rotate(Point axis, float angle);
+    virtual void move(Point new_base);
     virtual std::string get_info() = 0;
     virtual ~Shape() = default;
 };

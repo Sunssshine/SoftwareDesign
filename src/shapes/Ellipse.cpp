@@ -1,4 +1,3 @@
-#include <cmath>
 #include "Ellipse.h"
 
 Ellipse::Ellipse() : Shape(), radius_1_(1), radius_2_(2){}
@@ -21,20 +20,6 @@ void Ellipse::scale_r1(float value) {
 
 void Ellipse::scale_r2(float value) {
     radius_2_ *= value;
-}
-
-void Ellipse::rotate(float angle) {
-    angle_ += angle;
-}
-
-void Ellipse::rotate(Point axis, float angle) {
-    center_ = Point{(center_.x - axis.x) * std::cos(angle) - (center_.y - axis.y) * std::sin(angle) + axis.x,
-                    (center_.x - axis.x) * std::sin(angle) + (center_.y - axis.y) * std::cos(angle) + axis.y};
-    angle_ += angle;
-}
-
-void Ellipse::move(Point new_base) {
-    center_ = new_base;
 }
 
 std::string Ellipse::get_info() {
