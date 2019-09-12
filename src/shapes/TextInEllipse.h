@@ -18,7 +18,8 @@ public:
     TextInEllipse(std::string info, size_t font_size, Point center, float radius_1, float radius_2);
 
     void scale(float value) override;
-    virtual std::string get_info();
+
+    std::string get_info() const override;
 
 };
 

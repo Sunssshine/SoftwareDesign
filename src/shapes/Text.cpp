@@ -25,7 +25,7 @@ const std::string &Text::text() const{
     return text_;
 }
 
-std::string Text::get_info() {
+std::string Text::get_info() const {
     return std::string("Text. Center:") + center_ +
            "; info: \"" + text_ +
            "\"; font size: " + std::to_string(font_size_) +

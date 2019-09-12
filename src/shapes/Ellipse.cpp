@@ -22,7 +22,7 @@ void Ellipse::scale_r2(float value) {
     radius_2_ *= value;
 }
 
-std::string Ellipse::get_info() {
+std::string Ellipse::get_info() const {
     return std::string("Ellipse. Center:") + center_ +
            "; radius_1: " + std::to_string(radius_1_) +
            "; radius_2: " + std::to_string(radius_2_) +

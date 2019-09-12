@@ -21,7 +21,7 @@ void TextInEllipse::scale(float value) {
     radius_2_*= value;
 }
 
-std::string TextInEllipse::get_info(){
+std::string TextInEllipse::get_info() const {
     return std::string("Text in ellipse. Center:") + center_ +
            "; info: \"" + text_ +
            "\"; font size: " + std::to_string(font_size_) +

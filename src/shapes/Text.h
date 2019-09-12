@@ -9,8 +9,8 @@ protected:
     std::string text_;
     size_t font_size_;
 public:
-    Text(std::string text);
-    Text(std::string text, size_t font_size );
+    explicit Text(std::string text);
+    explicit Text(std::string text, size_t font_size);
 
     size_t &font_size();
     const size_t &font_size() const;
@@ -20,7 +20,7 @@ public:
 
     void scale(float value) override;
 
-    std::string get_info() override;
+    std::string get_info() const override;
 };
 
 

@@ -39,8 +39,14 @@ public:
     virtual void rotate(float angle);
     virtual void rotate(Point axis, float angle);
     virtual void move(Point new_base);
-    virtual std::string get_info() = 0;
+    virtual std::string get_info() const = 0;
+
+    virtual void draw() {}
+    virtual void clear() {}
+
     virtual ~Shape() = default;
+
+    friend std::ostream & operator<<(std::ostream &out, const Shape &c);
 };
 
 #endif //SOFTWARE_DESIGN_SHAPE_H

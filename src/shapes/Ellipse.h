@@ -22,7 +22,7 @@ public:
     float &radius_2() { return radius_2_;}
     const float &radius_2() const { return radius_2_;}
 
-    std::string get_info() override ;
+    std::string get_info() const override ;
 };
 
 

@@ -48,3 +48,8 @@ void Shape::rotate(Point axis, float angle) {
 void Shape::move(Point new_base) {
     center_ = new_base;
 }
+
+std::ostream & operator<<(std::ostream &out, const Shape &c) {
+    out << c.get_info();
+    return out;
+}

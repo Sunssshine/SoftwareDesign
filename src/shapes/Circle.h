@@ -12,13 +12,11 @@ public:
     void scale(float value) override;
     void rotate(float angle) override;
     void rotate(Point axis, float angle) override;
-//    void move(Point new_base) override;
 
     float &radius() { return radius_;}
     const float &radius() const { return radius_;}
 
-    std::string get_info() override ;
-    virtual ~Circle() = default;
+    std::string get_info() const override ;
 };
 
 
