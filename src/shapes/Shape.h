@@ -22,13 +22,14 @@ struct Point{
 
 class Shape {
 protected:
+    size_t id_;
     Point center_;
     float angle_;
 
     Shape();
     explicit Shape(Point center);
 public:
-
+    size_t get_id();
     virtual Point &center();
     virtual const Point &center() const;
 

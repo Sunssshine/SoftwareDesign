@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include "TreeNode.h"
+#include "../exceptions/EmpyErrorBT.h"
+#include "BinaryTreeIterator.h"
 
 template <typename T>
 class BinaryTree {
@@ -14,13 +16,26 @@ class BinaryTree {
 
     void print_klp_(T *node);
 public:
-    explicit BinaryTree(T *base): root_(base){}
+    explicit BinaryTree(T *base);
+
+    BinaryTreeIterator<T> iterator(){
+        return BinaryTreeIterator<T>(*this);
+    }
 
     T* root() const { return root_; }
     void print_klp();
     void clear(T* node);
+    void clear();
     ~BinaryTree();
 };
+
+template <typename T>
+BinaryTree<T>::BinaryTree(T *base) {
+    if (base != nullptr)
+        root_ = base;
+    else
+        throw EmptyErrorBT("pointer is empty");
+}
 
 template <typename T>
 void BinaryTree<T>::print_klp_(T* node)
@@ -53,6 +68,13 @@ void BinaryTree<T>::clear(T* node)
     }
     delete node;
 }
+
+template <typename T>
+void BinaryTree<T>::clear()
+{
+    clear(root_);
+}
+
 
 template <typename T>
 BinaryTree<T>::~BinaryTree(){

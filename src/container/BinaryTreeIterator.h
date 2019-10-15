@@ -10,6 +10,9 @@
 #include "BinaryTree.h"
 
 template <typename T>
+class BinaryTree;
+
+template <typename T>
 class BinaryTreeIterator {
     std::stack<T *> stack;
 public:

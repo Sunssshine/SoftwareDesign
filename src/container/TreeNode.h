@@ -6,8 +6,7 @@
 #define SOFTWARE_DESIGN_TREENODE_H
 
 #include <utility>
-//#include <hwloc/inlines.h
-#include <type_traits>
+//#include <type_traits>
 
 
 template<typename T>
@@ -19,6 +18,8 @@ public:
     explicit TreeNode(T base);
     TreeNode(T base, TreeNode *elem, bool is_right = false);
     TreeNode(T base, TreeNode* left, TreeNode* right);
+
+
 
     T &elem();
     const T &elem() const;

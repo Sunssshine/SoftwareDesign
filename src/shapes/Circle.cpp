@@ -20,5 +20,6 @@ void Circle::rotate(Point axis, float angle) {
 std::string Circle::get_info() const {
     return std::string("Circle. Center:") + center_ +
            std::string("; radius: ") + std::to_string(radius_) +
-           std::string("; angle: ") + std::to_string(angle_);
+           std::string("; angle: ") + std::to_string(angle_) +
+           std::string("; id: ") + std::to_string(id_);
 }

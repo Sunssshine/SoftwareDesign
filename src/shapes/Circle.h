@@ -4,6 +4,7 @@
 #include "Shape.h"
 
 class Circle : virtual public Shape {
+protected:
     float radius_;
 public:
     explicit Circle();

@@ -29,6 +29,7 @@ std::string Text::get_info() const {
     return std::string("Text. Center:") + center_ +
            "; info: \"" + text_ +
            "\"; font size: " + std::to_string(font_size_) +
-           "; angle: " + std::to_string(angle_);;
+           "; angle: " + std::to_string(angle_) +
+           std::string("; id: ") + std::to_string(id_);
 }
 

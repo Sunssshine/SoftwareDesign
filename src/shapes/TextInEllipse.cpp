@@ -27,5 +27,7 @@ std::string TextInEllipse::get_info() const {
            "\"; font size: " + std::to_string(font_size_) +
            "; angle: " + std::to_string(angle_) +
            "; radius_1: " + std::to_string(radius_1_) +
-           "; radius_2: " + std::to_string(radius_2_);
+           "; radius_2: " + std::to_string(radius_2_) +
+            std::string("; id: ") + std::to_string(id_);
+
 }

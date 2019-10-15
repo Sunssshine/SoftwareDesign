@@ -1,8 +1,10 @@
 #include "Shape.h"
 
-Point::Point() : x(0), y(0) {}
-
 Point::Point(float x, float y = 0): x(x), y(y){}
+
+Point::Point() : x(0), y(0) {
+
+}
 
 Point &Point::operator=(const Point &other) // copy assignment
 {
@@ -23,9 +25,13 @@ std::string operator+(const std::basic_string<char>& string, Point point) {
     return string + '{' + std::to_string(point.x) + "; " + std::to_string(point.y) + '}';
 }
 
-Shape::Shape() : center_(Point()), angle_(0){}
+Shape::Shape(Point center) : center_(center), angle_(0){
+    static size_t _id = 0;
+    id_ = _id;
+    ++_id;
+}
 
-Shape::Shape(Point center) : center_(center), angle_(0){}
+Shape::Shape() : Shape(Point()){}
 
 Point &Shape::center() { return center_; }
 

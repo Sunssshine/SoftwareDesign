@@ -24,11 +24,18 @@ int main(int argc, char **argv)
 
     node1->left(shape_3);
 
-    BinaryTree<nodeType> tree(node0);
-    BinaryTreeIterator<nodeType> iter(tree);
+    try {
+        BinaryTree<nodeType> tree(node0);
+//        BinaryTree<nodeType> tree(nullptr);
+        BinaryTreeIterator<nodeType> iter = tree.iterator();
 
-    while(iter.has_next()) {
-        std::cout << *(iter.next()->elem()) << std::endl;
+        while(iter.has_next()) {
+            std::cout << *(iter.next()->elem()) << std::endl;
+        }
+    }
+    catch(EmptyErrorBT &e)
+    {
+        std::cout << "Exception:" << e.what() << std::endl;
     }
 
     return 0;

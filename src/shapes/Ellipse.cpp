@@ -26,6 +26,7 @@ std::string Ellipse::get_info() const {
     return std::string("Ellipse. Center:") + center_ +
            "; radius_1: " + std::to_string(radius_1_) +
            "; radius_2: " + std::to_string(radius_2_) +
-           "; angle: " + std::to_string(angle_);
+           "; angle: " + std::to_string(angle_) +
+           "; id: " + std::to_string(id_);
 
 }
