@@ -9,7 +9,7 @@
 
 class EmptyErrorBT : public BTException {
 public:
-    inline explicit EmptyErrorBT(const std::string& msg)
+    inline explicit EmptyErrorBT(const char *msg)
             : BTException(msg) {}
 };
 

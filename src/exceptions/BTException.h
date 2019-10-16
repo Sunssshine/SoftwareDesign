@@ -6,19 +6,21 @@
 #define SOFTWARE_DESIGN_BTEXCEPTION_H
 
 #include <string>
+#include <utility>
+#include <exception>
 
 class BTException {
 public:
     BTException() = default;
-    inline explicit BTException(const std::string &msg)
-            : _msg(msg) {}
+    inline explicit BTException(const char *msg)
+            : msg_(msg) {}
 
-    inline std::string what() const {
-        return _msg;
+    const char *what() const {
+        return msg_;
     }
 
 protected:
-    std::string _msg;
+    const char *msg_;
 };
 
 #endif //SOFTWARE_DESIGN_BTEXCEPTION_H

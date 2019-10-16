@@ -6,7 +6,7 @@
 #define SOFTWARE_DESIGN_BINARYTREEITERATOR_H
 
 #include <stack>
-#include <exception>
+#include "../exceptions/InvalidIteratorBT.h"
 #include "BinaryTree.h"
 
 template <typename T>
@@ -27,14 +27,14 @@ public:
 template<typename T>
 BinaryTreeIterator<T>::BinaryTreeIterator(T *root) {
     if (root == nullptr)
-        throw std::invalid_argument("nullptr root");
+        throw InvalidIteratorBT("nullptr root");
     stack.push(root);
 }
 
 template<typename T>
 BinaryTreeIterator<T>::BinaryTreeIterator(const BinaryTree<T> &tree) {
     if (tree.root() == nullptr)
-        throw std::invalid_argument("nullptr root");
+        throw InvalidIteratorBT("nullptr root");
     stack.push(tree.root());
 }
 

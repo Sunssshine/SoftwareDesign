@@ -37,6 +37,13 @@ int main(int argc, char **argv)
     {
         std::cout << "Exception:" << e.what() << std::endl;
     }
+    catch(InvalidIteratorBT &e)
+    {
+        std::cout << "Exception:" << e.what() << std::endl;
+    }
+    catch(std::exception &e){
+        std::cout << "Exception:" << e.what() << std::endl;
+    }
 
     return 0;
 }

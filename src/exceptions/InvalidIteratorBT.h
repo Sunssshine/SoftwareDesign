@@ -9,7 +9,7 @@
 
 class InvalidIteratorBT : public BTException {
 public:
-    inline InvalidIteratorBT(const std::string& msg)
+    inline InvalidIteratorBT(const char *msg)
             : BTException(msg) {}
 };
 
