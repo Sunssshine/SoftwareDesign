@@ -2,9 +2,7 @@
 
 Point::Point(float x, float y = 0): x(x), y(y){}
 
-Point::Point() : x(0), y(0) {
-
-}
+Point::Point() : x(0), y(0) {}
 
 Point &Point::operator=(const Point &other) // copy assignment
 {

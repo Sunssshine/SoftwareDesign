@@ -1,6 +1,3 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
-
 #include "container/BinaryTree.h"
 #include "container/BinaryTreeIterator.h"
 

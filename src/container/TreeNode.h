@@ -71,8 +71,7 @@ template<typename T>
 void TreeNode<T>::left(T left) { left_ = new TreeNode<T>(left); }
 
 template<typename T>
-void TreeNode<T>::left(TreeNode *left) {
-    left_ = left;}
+void TreeNode<T>::left(TreeNode *left) { left_ = left;}
 
 template<typename T>
 TreeNode<T> *TreeNode<T>::right() { return right_; }

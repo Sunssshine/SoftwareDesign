@@ -33,6 +33,7 @@
 
 cmake-build-debug
 .idea
-info/Lab*
-info/*.html
+info/tasks
+*.docx
 docs
+build
