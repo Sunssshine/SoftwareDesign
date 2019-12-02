@@ -37,3 +37,10 @@ info/tasks
 *.docx
 docs
 build
+
+object_script.*
+KPO_2.pro.*
+Makefile*
+debug
+release
+.qmake.stash
