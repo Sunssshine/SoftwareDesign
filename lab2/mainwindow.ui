@@ -7,12 +7,12 @@
     <x>0</x>
     <y>0</y>
     <width>1146</width>
-    <height>772</height>
+    <height>631</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
+    <width>950</width>
     <height>570</height>
    </size>
   </property>
@@ -48,124 +48,89 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QGroupBox" name="groupBox">
-          <property name="minimumSize">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
            <size>
-            <width>415</width>
+            <width>0</width>
             <height>0</height>
            </size>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>415</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="title">
-           <string>Фигуры</string>
-          </property>
-          <widget class="QLineEdit" name="radius_2">
-           <property name="geometry">
-            <rect>
-             <x>160</x>
-             <y>70</y>
-             <width>140</width>
-             <height>25</height>
-            </rect>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>140</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>140</width>
-             <height>16777215</height>
-            </size>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="radius_1">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>70</y>
-             <width>140</width>
-             <height>25</height>
-            </rect>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>140</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>140</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-          <widget class="QComboBox" name="chooseObject">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>30</y>
-             <width>252</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <item>
-            <property name="text">
-             <string>Окружность</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Эллипс</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Текст</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Текст в эллипсе</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Правильный треугольник с текстом</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Треугольник</string>
-            </property>
-           </item>
-          </widget>
-         </widget>
+         </spacer>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_10"/>
-        </item>
-        <item>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="3" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
             <item>
              <widget class="QLabel" name="label">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="text">
+               <string>Фигуры</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="chooseObject">
+              <item>
+               <property name="text">
+                <string>Окружность</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Эллипс</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Текст</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Текст в эллипсе</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Правильный треугольник с текстом</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Треугольник</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Радиус окружности/горизонтальный радиус эллипса</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="radius_1">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>0</width>
-                <height>10</height>
+                <width>140</width>
+                <height>25</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -175,12 +140,23 @@
                </size>
               </property>
               <property name="text">
-               <string>Длина стороны</string>
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Вертикальный радиус эллипса</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEditLength">
+             <widget class="QLineEdit" name="radius_2">
               <property name="minimumSize">
                <size>
                 <width>140</width>
@@ -197,42 +173,10 @@
             </item>
            </layout>
           </item>
-          <item row="6" column="0">
-           <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
             <item>
-             <widget class="QLineEdit" name="lineEditRadius">
-              <property name="minimumSize">
-               <size>
-                <width>140</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>140</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="3" column="3">
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>10</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>140</width>
-                <height>16777215</height>
-               </size>
-              </property>
+             <widget class="QLabel" name="label_5">
               <property name="text">
                <string>Текст</string>
               </property>
@@ -256,8 +200,35 @@
             </item>
            </layout>
           </item>
-          <item row="6" column="3">
-           <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
             <item>
              <widget class="QPushButton" name="newSceneButton">
               <property name="minimumSize">
@@ -292,7 +263,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Удалить вершину</string>
+               <string>Удалить фигуру</string>
               </property>
              </widget>
             </item>

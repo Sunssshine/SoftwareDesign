@@ -16,12 +16,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("Лабораторная №2");
+
 //    this->setFixedSize(QSize(this->width(), this->height()));
-    this->setMaximumSize(QWIDGETSIZE_MAX,QWIDGETSIZE_MAX);
-    this->setMinimumSize(0,0);
+
     auto newWindow = new FiguresSceneMdi(ui->mdiArea);
     auto newFiguresScene = ui->mdiArea->addSubWindow(newWindow);
-    newFiguresScene->setFixedSize(QSize(285, 320));
+//    newFiguresScene->setFixedSize(QSize(400, 400));
     newFiguresScene->setWindowTitle("Сцена");
 }
 
@@ -97,27 +97,11 @@ void MainWindow::on_radius_2_textChanged(const QString &arg1){
     }
 }
 
-void MainWindow::on_lineEditLength_textChanged(const QString &arg1)
-{
-    auto scenes = getAllScenes();
-    for (auto scene : scenes) {
-        scene->setFigureSideLength(arg1.toInt());
-    }
-}
-
 void MainWindow::on_lineEditText_textChanged(const QString &arg1)
 {
     auto scenes = getAllScenes();
     for (auto scene : scenes) {
         scene->setFigureText(arg1);
-    }
-}
-
-void MainWindow::on_lineEditRadius_textChanged(const QString &arg1)
-{
-    auto scenes = getAllScenes();
-    for (auto scene : scenes) {
-        scene->setFigureRoundedRadius(arg1.toInt());
     }
 }
 
@@ -131,7 +115,7 @@ void MainWindow::on_newSceneButton_clicked()
 {
     auto newWindow = new FiguresSceneMdi(ui->mdiArea);
     auto newFiguresScene = ui->mdiArea->addSubWindow(newWindow);
-    newFiguresScene->setFixedSize(QSize(285, 320));
+//    newFiguresScene->setFixedSize(QSize(3800, 380));
     newFiguresScene->setWindowTitle("Сцена");
 
     newWindow->figureScene->setFigureType(

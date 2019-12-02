@@ -13,8 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QGridLayout>
-#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -41,21 +39,22 @@ public:
     QMdiArea *mdiArea;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
-    QGroupBox *groupBox;
-    QLineEdit *radius_2;
-    QLineEdit *radius_1;
-    QComboBox *chooseObject;
+    QSpacerItem *horizontalSpacer_2;
     QVBoxLayout *verticalLayout_10;
-    QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_3;
+    QHBoxLayout *horizontalLayout_8;
     QLabel *label;
-    QLineEdit *lineEditLength;
-    QVBoxLayout *verticalLayout;
-    QLineEdit *lineEditRadius;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *label_3;
+    QComboBox *chooseObject;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_2;
+    QLineEdit *radius_1;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label_4;
+    QLineEdit *radius_2;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_5;
     QLineEdit *lineEditText;
-    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer;
     QPushButton *newSceneButton;
     QPushButton *pushButton;
     QMenuBar *menubar;
@@ -66,8 +65,8 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1146, 772);
-        MainWindow->setMinimumSize(QSize(800, 570));
+        MainWindow->resize(1146, 631);
+        MainWindow->setMinimumSize(QSize(950, 570));
         openAction = new QAction(MainWindow);
         openAction->setObjectName(QString::fromUtf8("openAction"));
         saveAction = new QAction(MainWindow);
@@ -90,21 +89,21 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        groupBox = new QGroupBox(centralwidget);
-        groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setMinimumSize(QSize(415, 0));
-        groupBox->setMaximumSize(QSize(415, 16777215));
-        radius_2 = new QLineEdit(groupBox);
-        radius_2->setObjectName(QString::fromUtf8("radius_2"));
-        radius_2->setGeometry(QRect(160, 70, 140, 25));
-        radius_2->setMinimumSize(QSize(140, 25));
-        radius_2->setMaximumSize(QSize(140, 16777215));
-        radius_1 = new QLineEdit(groupBox);
-        radius_1->setObjectName(QString::fromUtf8("radius_1"));
-        radius_1->setGeometry(QRect(10, 70, 140, 25));
-        radius_1->setMinimumSize(QSize(140, 25));
-        radius_1->setMaximumSize(QSize(140, 16777215));
-        chooseObject = new QComboBox(groupBox);
+        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setEnabled(true);
+
+        horizontalLayout_8->addWidget(label);
+
+        chooseObject = new QComboBox(centralwidget);
         chooseObject->addItem(QString());
         chooseObject->addItem(QString());
         chooseObject->addItem(QString());
@@ -112,88 +111,93 @@ public:
         chooseObject->addItem(QString());
         chooseObject->addItem(QString());
         chooseObject->setObjectName(QString::fromUtf8("chooseObject"));
-        chooseObject->setGeometry(QRect(10, 30, 252, 23));
 
-        horizontalLayout->addWidget(groupBox);
-
-        verticalLayout_10 = new QVBoxLayout();
-        verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
-
-        horizontalLayout->addLayout(verticalLayout_10);
-
-        gridLayout = new QGridLayout();
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(0, 10));
-        label->setMaximumSize(QSize(140, 16777215));
-
-        verticalLayout_3->addWidget(label);
-
-        lineEditLength = new QLineEdit(centralwidget);
-        lineEditLength->setObjectName(QString::fromUtf8("lineEditLength"));
-        lineEditLength->setMinimumSize(QSize(140, 25));
-        lineEditLength->setMaximumSize(QSize(140, 16777215));
-
-        verticalLayout_3->addWidget(lineEditLength);
+        horizontalLayout_8->addWidget(chooseObject);
 
 
-        gridLayout->addLayout(verticalLayout_3, 3, 0, 1, 1);
+        verticalLayout_10->addLayout(horizontalLayout_8);
 
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        lineEditRadius = new QLineEdit(centralwidget);
-        lineEditRadius->setObjectName(QString::fromUtf8("lineEditRadius"));
-        lineEditRadius->setMinimumSize(QSize(140, 25));
-        lineEditRadius->setMaximumSize(QSize(140, 16777215));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        verticalLayout->addWidget(lineEditRadius);
+        horizontalLayout_2->addWidget(label_2);
+
+        radius_1 = new QLineEdit(centralwidget);
+        radius_1->setObjectName(QString::fromUtf8("radius_1"));
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(radius_1->sizePolicy().hasHeightForWidth());
+        radius_1->setSizePolicy(sizePolicy);
+        radius_1->setMinimumSize(QSize(140, 25));
+        radius_1->setMaximumSize(QSize(140, 16777215));
+
+        horizontalLayout_2->addWidget(radius_1);
 
 
-        gridLayout->addLayout(verticalLayout, 6, 0, 1, 1);
+        verticalLayout_10->addLayout(horizontalLayout_2);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setMinimumSize(QSize(0, 10));
-        label_3->setMaximumSize(QSize(140, 16777215));
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        verticalLayout_2->addWidget(label_3);
+        horizontalLayout_6->addWidget(label_4);
+
+        radius_2 = new QLineEdit(centralwidget);
+        radius_2->setObjectName(QString::fromUtf8("radius_2"));
+        radius_2->setMinimumSize(QSize(140, 25));
+        radius_2->setMaximumSize(QSize(140, 16777215));
+
+        horizontalLayout_6->addWidget(radius_2);
+
+
+        verticalLayout_10->addLayout(horizontalLayout_6);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        horizontalLayout_7->addWidget(label_5);
 
         lineEditText = new QLineEdit(centralwidget);
         lineEditText->setObjectName(QString::fromUtf8("lineEditText"));
         lineEditText->setMinimumSize(QSize(140, 25));
         lineEditText->setMaximumSize(QSize(140, 16777215));
 
-        verticalLayout_2->addWidget(lineEditText);
+        horizontalLayout_7->addWidget(lineEditText);
 
 
-        gridLayout->addLayout(verticalLayout_2, 3, 3, 1, 1);
+        verticalLayout_10->addLayout(horizontalLayout_7);
 
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer);
+
         newSceneButton = new QPushButton(centralwidget);
         newSceneButton->setObjectName(QString::fromUtf8("newSceneButton"));
         newSceneButton->setMinimumSize(QSize(0, 25));
         newSceneButton->setMaximumSize(QSize(140, 16777215));
 
-        verticalLayout_4->addWidget(newSceneButton);
+        horizontalLayout_9->addWidget(newSceneButton);
 
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setMinimumSize(QSize(0, 25));
         pushButton->setMaximumSize(QSize(140, 16777215));
 
-        verticalLayout_4->addWidget(pushButton);
+        horizontalLayout_9->addWidget(pushButton);
 
 
-        gridLayout->addLayout(verticalLayout_4, 6, 3, 1, 1);
+        verticalLayout_10->addLayout(horizontalLayout_9);
 
 
-        horizontalLayout->addLayout(gridLayout);
+        horizontalLayout->addLayout(verticalLayout_10);
 
 
         verticalLayout_6->addLayout(horizontalLayout);
@@ -227,8 +231,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         openAction->setText(QApplication::translate("MainWindow", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214", nullptr));
         saveAction->setText(QApplication::translate("MainWindow", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
-        groupBox->setTitle(QApplication::translate("MainWindow", "\320\244\320\270\320\263\321\203\321\200\321\213", nullptr));
-        radius_1->setText(QString());
+        label->setText(QApplication::translate("MainWindow", "\320\244\320\270\320\263\321\203\321\200\321\213", nullptr));
         chooseObject->setItemText(0, QApplication::translate("MainWindow", "\320\236\320\272\321\200\321\203\320\266\320\275\320\276\321\201\321\202\321\214", nullptr));
         chooseObject->setItemText(1, QApplication::translate("MainWindow", "\320\255\320\273\320\273\320\270\320\277\321\201", nullptr));
         chooseObject->setItemText(2, QApplication::translate("MainWindow", "\320\242\320\265\320\272\321\201\321\202", nullptr));
@@ -236,10 +239,12 @@ public:
         chooseObject->setItemText(4, QApplication::translate("MainWindow", "\320\237\321\200\320\260\320\262\320\270\320\273\321\214\320\275\321\213\320\271 \321\202\321\200\320\265\321\203\320\263\320\276\320\273\321\214\320\275\320\270\320\272 \321\201 \321\202\320\265\320\272\321\201\321\202\320\276\320\274", nullptr));
         chooseObject->setItemText(5, QApplication::translate("MainWindow", "\320\242\321\200\320\265\321\203\320\263\320\276\320\273\321\214\320\275\320\270\320\272", nullptr));
 
-        label->setText(QApplication::translate("MainWindow", "\320\224\320\273\320\270\320\275\320\260 \321\201\321\202\320\276\321\200\320\276\320\275\321\213", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "\320\242\320\265\320\272\321\201\321\202", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "\320\240\320\260\320\264\320\270\321\203\321\201 \320\276\320\272\321\200\321\203\320\266\320\275\320\276\321\201\321\202\320\270/\320\263\320\276\321\200\320\270\320\267\320\276\320\275\321\202\320\260\320\273\321\214\320\275\321\213\320\271 \321\200\320\260\320\264\320\270\321\203\321\201 \321\215\320\273\320\273\320\270\320\277\321\201\320\260", nullptr));
+        radius_1->setText(QString());
+        label_4->setText(QApplication::translate("MainWindow", "\320\222\320\265\321\200\321\202\320\270\320\272\320\260\320\273\321\214\320\275\321\213\320\271 \321\200\320\260\320\264\320\270\321\203\321\201 \321\215\320\273\320\273\320\270\320\277\321\201\320\260", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "\320\242\320\265\320\272\321\201\321\202", nullptr));
         newSceneButton->setText(QApplication::translate("MainWindow", "\320\235\320\276\320\262\320\260\321\217 \321\201\321\206\320\265\320\275\320\260", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \320\262\320\265\321\200\321\210\320\270\320\275\321\203", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \321\204\320\270\320\263\321\203\321\200\321\203", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "\320\244\320\260\320\271\320\273", nullptr));
     } // retranslateUi
 

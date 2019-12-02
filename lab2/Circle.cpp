@@ -1,5 +1,5 @@
 #include "Circle.h"
-#include "shape.h"
+#include "Shape.h"
 
 Circle::Circle(double x, double y, double r) : Shape(x,y), radius(r){
     figureRect = QRectF(-r, -r, 2*r, 2*r);

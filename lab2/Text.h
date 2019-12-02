@@ -2,7 +2,7 @@
 #define TEXT_H
 #include <string>
 #include "headers.h"
-#include "shape.h"
+#include "Shape.h"
 
 class Text : virtual public Shape{
 public:

@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QWidget>
 #include "shapeview.h"
 
@@ -19,6 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_FiguresSceneMdi
 {
 public:
+    QGridLayout *gridLayout_2;
     ShapeView *graphicsView;
 
     void setupUi(QWidget *FiguresSceneMdi)
@@ -26,14 +28,29 @@ public:
         if (FiguresSceneMdi->objectName().isEmpty())
             FiguresSceneMdi->setObjectName(QString::fromUtf8("FiguresSceneMdi"));
         FiguresSceneMdi->setEnabled(true);
-        FiguresSceneMdi->setMinimumSize(QSize(270, 273));
-        FiguresSceneMdi->setMaximumSize(QSize(270, 273));
+        FiguresSceneMdi->resize(280, 287);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(FiguresSceneMdi->sizePolicy().hasHeightForWidth());
+        FiguresSceneMdi->setSizePolicy(sizePolicy);
+        FiguresSceneMdi->setMinimumSize(QSize(200, 200));
+        FiguresSceneMdi->setMaximumSize(QSize(400, 400));
+        FiguresSceneMdi->setSizeIncrement(QSize(1, 1));
+        FiguresSceneMdi->setBaseSize(QSize(320, 320));
+        gridLayout_2 = new QGridLayout(FiguresSceneMdi);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         graphicsView = new ShapeView(FiguresSceneMdi);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(10, 10, 251, 251));
-        graphicsView->setMinimumSize(QSize(251, 251));
-        graphicsView->setMaximumSize(QSize(251, 251));
+        graphicsView->setEnabled(true);
+        graphicsView->setMinimumSize(QSize(180, 180));
+        graphicsView->setMaximumSize(QSize(380, 380));
+        graphicsView->setSizeIncrement(QSize(1, 1));
+        graphicsView->setBaseSize(QSize(300, 300));
         graphicsView->setDragMode(QGraphicsView::NoDrag);
+
+        gridLayout_2->addWidget(graphicsView, 0, 0, 1, 1);
+
 
         retranslateUi(FiguresSceneMdi);
 

@@ -1,9 +1,9 @@
 #include "figuresscene.h"
-#include "righttriangle.h"
-#include "righttriangleroundedcorners.h"
+//#include "righttriangle.h"
+//#include "righttriangleroundedcorners.h"
 #include "Text.h"
-#include "shape.h"
-#include "triangletext.h"
+#include "Shape.h"
+//#include "triangletext.h"
 #include "Circle.h"
 #include "Ellipse.h"
 #include "TextInEllipse.h"
@@ -63,19 +63,20 @@ void FiguresScene::setFigureText(QString newText) {
 }
 void FiguresScene::popFigure() {
     try {
-        auto item = this->itemAt(figuresQueue.top()->getCentCoords().x, figuresQueue.top()->getCentCoords().y, QTransform::fromScale(1, 1));
+        auto item = this->itemAt(figuresQueue.front()->getCentCoords().x, figuresQueue.front()->getCentCoords().y, QTransform::fromScale(1, 1));
         this->removeItem(item);
         figuresQueue.pop();
         figuresCount--;
-    } catch (QueueException& e) {
-        std::cout<<"Exception"<<std::endl;
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
     }
 
 }
 void FiguresScene::serialize(QDataStream &stream) {
     stream << figuresQueue.size();
     while (figuresQueue.size()) {
-        stream << *(figuresQueue.top());
+        Shape *fig = figuresQueue.front();
+        stream << *fig;
         popFigure();
     }
 
@@ -102,8 +103,8 @@ void FiguresScene::deserialize(QDataStream &stream) {
 
         if (figure) {
             this->addItem(figure);
-            figuresCount ++;
-            figuresQueue.push(figure, figuresCount);
+            figuresCount++;
+            figuresQueue.push(figure);
         }
     }
 }
@@ -111,6 +112,7 @@ void FiguresScene::deserialize(QDataStream &stream) {
 QString FiguresScene::getFigureType() const {
     return typeFigure;
 }
+
 void FiguresScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
     auto item = this->itemAt(event->scenePos(), QTransform::fromScale(1, 1));
     if(!item) {
@@ -128,6 +130,6 @@ void FiguresScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
         shape->setPos(event->scenePos());
         this->addItem(shape);
         figuresCount++;
-        figuresQueue.push(shape, figuresCount);
+        figuresQueue.push(shape);
     }
 }

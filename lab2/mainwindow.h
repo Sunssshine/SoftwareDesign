@@ -21,9 +21,7 @@ private slots:
 
     void on_chooseObject_currentIndexChanged(int index);
 
-    void on_lineEditLength_textChanged(const QString &arg1);
     void on_lineEditText_textChanged(const QString &arg1);
-    void on_lineEditRadius_textChanged(const QString &arg1);
 
     void on_radius_1_textChanged(const QString &arg1);
     void on_radius_2_textChanged(const QString &arg1);

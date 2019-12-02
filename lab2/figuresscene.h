@@ -3,8 +3,9 @@
 
 #include <QWidget>
 #include <QGraphicsScene>
-#include "shape.h"
-#include "priorityQueueContainer.h"
+#include "Shape.h"
+//#include "priorityQueueContainer.h"
+#include <queue>
 
 namespace Ui {
 class FiguresScene;
@@ -41,7 +42,8 @@ private:
     int fontSize = 12;
     QString figureText = "\"\"";
     Shape* shape;
-    PriorityQueue<Shape*> figuresQueue;
+//    PriorityQueue<Shape*> figuresQueue;
+    std::queue<Shape*> figuresQueue;
     int figuresCount = 0;
 
 protected:

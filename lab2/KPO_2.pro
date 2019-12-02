@@ -25,29 +25,25 @@ SOURCES += \
     figuresscenemdi.cpp \
     main.cpp \
     mainwindow.cpp \
-    righttriangle.cpp \
-    righttriangleroundedcorners.cpp \
-    shapeview.cpp \
-    triangletext.cpp
+    shapeview.cpp
 
 HEADERS += \
+    BTException.h \
+    BinaryTree.h \
     Ellipse.h \
     Circle.h \
     Colour.h \
+    EmpyErrorBT.h \
     Point.h \
+    Shape.h \
     Text.h \
     TextInEllipse.h \
+    TreeNode.h \
     figuresscene.h \
     figuresscenemdi.h \
     headers.h \
     mainwindow.h \
-    priorityQueueContainer.h \
-    priorityQueueExceptions.h \
-    righttriangle.h \
-    righttriangleroundedcorners.h \
-    shape.h \
-    shapeview.h \
-    triangletext.h
+    shapeview.h
 
 FORMS += \
     figuresscene.ui \

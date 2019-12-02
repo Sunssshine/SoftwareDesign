@@ -1,25 +1,26 @@
-#include "shape.h"
-#include "righttriangle.h"
-#include "righttriangleroundedcorners.h"
+#include "Shape.h"
 #include "Text.h"
 #include "Circle.h"
 #include "Ellipse.h"
-#include "triangletext.h"
+#include "TextInEllipse.h"
 #include <QGraphicsSceneEvent>
 #include <QCursor>
+#include <stdexcept>
 
-Shape::Shape(double x, double y): ang(0), cent(x,y), col(255,255,0){
+Shape::Shape(double x, double y): ang(0), cent(x,y), col(0,255,255){
     this->setPos(x,y);
 }
 Shape::Shape(QDataStream& stream) {
     stream >> figureRect;
+    std::cout << figureRect.x() << ' ' << figureRect.y() << ' ';
     QPoint qcent;
     stream >> qcent;
+    std::cout << qcent.rx() << ' ' << qcent.ry() << ' ';
     cent = Point(qcent.x(),qcent.y());
     QPointF pos;
     stream >> pos;
-
     setPos(pos);
+    std::cout << pos.rx() << ' ' << qcent.ry() << std::endl;
 }
 void Shape::changePos(double x, double y){
     for(auto& it: pts){
@@ -34,19 +35,25 @@ void Shape::changePos(double x, double y){
 Shape* Shape::loadFigure(QDataStream &stream) {
     QString type;
     stream >> type;
-    if (type == "triangle") {
-        return new RightTriangle(stream);
+//    if (type == "triangle") {
+//        return new RightTriangle(stream);
 //    } else if (type == "triangleWithCorners") {
 //        return new RightTriangleRoundedCorners(stream);
-    } else if (type == "text") {
+    if (type == "text") {
         return new Text(stream);
     } else if (type == "circle") {
         return new Circle(stream);
     } else if (type == "ellipse") {
         return new Ellipse(stream);
+    } else if (type == "textInEllipse") {
+        return new TextInEllipse(stream);
     } else {
-        return new TriangleText(stream);
+        throw std::logic_error("Incorrect figure type");
     }
+
+    /*else {
+        return new TriangleText(stream);
+    }*/
 }
 Point Shape::getCentCoords() const {
     return cent;

@@ -2,13 +2,13 @@
 #include "headers.h"
 #include "Point.h"
 #include "Colour.h"
-#include "shape.h"
-#include "righttriangle.h"
-#include "righttriangleroundedcorners.h"
+#include "Shape.h"
+//#include "righttriangle.h"
+//#include "righttriangleroundedcorners.h"
+//#include "triangletext.h"
+//#include "priorityQueueExceptions.h"
+//#include "priorityQueueContainer.h"
 #include "Text.h"
-#include "triangletext.h"
-#include "priorityQueueExceptions.h"
-#include "priorityQueueContainer.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
