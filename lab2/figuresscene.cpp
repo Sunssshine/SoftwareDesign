@@ -21,12 +21,6 @@ FiguresScene::~FiguresScene(){
 void FiguresScene::setFigureType(QString newFigureType) {
      typeFigure = newFigureType;
 }
-void FiguresScene::setFigureRoundedRadius(int newRadius) {
-    if (newRadius < 0) {
-        newRadius = 0;
-    }
-    figureRoundedRadius = newRadius;
-}
 
 void FiguresScene::setFigureRadius1(int newRadius) {
     if (newRadius <= 0) {
@@ -42,16 +36,10 @@ void FiguresScene::setFigureRadius2(int newRadius) {
     radius_2 = newRadius;
 }
 
-void FiguresScene::setFigureSideLength(int newLength) {
-    if (newLength <= 0) {
-        newLength = 1;
-    }
-    figureSideLength = newLength;
-}
 
-void FiguresScene::setFigureText(int fontSz) {
-    if (fontSz < 8)
-        fontSz = 8;
+void FiguresScene::setFigureFontSize(int fontSz) {
+    if (fontSz <= 12)
+        fontSz = 12;
     fontSize = fontSz;
 }
 

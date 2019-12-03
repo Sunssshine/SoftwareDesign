@@ -65,22 +65,52 @@ std::string get_figure_type(int index){
         return "text";
     case 3:
         return "textInEllipse";
-    case 4:
-        return "triangle";
-    case 5:
-        return "triangleText";
-    case 6:
-        return "triangleWithCorners";
     }
+    throw std::logic_error("unknown object");
+}
+
+void MainWindow::setEnabledFields(const std::string &figure) {
+    if (figure == std::string("circle"))
+    {
+        ui->radius_1->setEnabled(true);
+        ui->radius_2->setEnabled(false);
+        ui->lineEditText->setEnabled(false);
+        ui->fontSize->setEnabled(false);
+    }
+    else if (figure == std::string("ellipse"))
+    {
+        ui->radius_1->setEnabled(true);
+        ui->radius_2->setEnabled(true);
+        ui->lineEditText->setEnabled(false);
+        ui->fontSize->setEnabled(false);
+    }
+    else if (figure == std::string("text"))
+    {
+        ui->radius_1->setEnabled(false);
+        ui->radius_2->setEnabled(false);
+        ui->lineEditText->setEnabled(true);
+        ui->fontSize->setEnabled(true);
+    }
+    else if (figure == std::string("textInEllipse"))
+    {
+        ui->radius_1->setEnabled(true);
+        ui->radius_2->setEnabled(true);
+        ui->lineEditText->setEnabled(true);
+        ui->fontSize->setEnabled(true);
+    }
+    else
+        throw std::logic_error("unknown object");
 
 }
 
 void MainWindow::on_chooseObject_currentIndexChanged(int index){
 
     auto scenes = getAllScenes();
-    auto figure = QString::fromStdString(get_figure_type(index));
+    auto figure = get_figure_type(index);
+    setEnabledFields(figure);
+
     for (auto scene : scenes)
-        scene->setFigureType(figure);
+        scene->setFigureType(QString::fromStdString(figure));
 }
 
 void MainWindow::on_radius_1_textChanged(const QString &arg1){
@@ -105,6 +135,13 @@ void MainWindow::on_lineEditText_textChanged(const QString &arg1)
     }
 }
 
+void MainWindow::on_fontSize_textChanged(const QString &arg1){
+    auto scenes = getAllScenes();
+    for (auto scene : scenes) {
+        scene->setFigureFontSize(arg1.toInt());
+    }
+}
+
 void MainWindow::on_pushButton_clicked()
 {
     auto scene = getCurrentScene();
@@ -115,18 +152,16 @@ void MainWindow::on_newSceneButton_clicked()
 {
     auto newWindow = new FiguresSceneMdi(ui->mdiArea);
     auto newFiguresScene = ui->mdiArea->addSubWindow(newWindow);
-//    newFiguresScene->setFixedSize(QSize(3800, 380));
     newFiguresScene->setWindowTitle("Сцена");
 
-    newWindow->figureScene->setFigureType(
-                QString::fromStdString(get_figure_type(ui->chooseObject->currentIndex())));
+    std::string figure = get_figure_type(ui->chooseObject->currentIndex());
+    newWindow->figureScene->setFigureType(QString::fromStdString(figure));
 
     newWindow->figureScene->setFigureRadius1(ui->radius_1->displayText().toInt());
     newWindow->figureScene->setFigureRadius2(ui->radius_2->displayText().toInt());
-
     newWindow->figureScene->setFigureText(ui->lineEditText->displayText());
-
-//    setFigureText(int fontSz);
+    newWindow->figureScene->setFigureFontSize(ui->fontSize->displayText().toInt());
+    setEnabledFields(figure);
 
 
     newWindow->show();

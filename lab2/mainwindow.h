@@ -22,6 +22,7 @@ private slots:
     void on_chooseObject_currentIndexChanged(int index);
 
     void on_lineEditText_textChanged(const QString &arg1);
+    void on_fontSize_textChanged(const QString &arg1);
 
     void on_radius_1_textChanged(const QString &arg1);
     void on_radius_2_textChanged(const QString &arg1);
@@ -35,6 +36,10 @@ private slots:
     void on_saveAction_triggered();
 
 private:
+
+    void setEnabledFields(const std::string &figure);
+
+
     Ui::MainWindow *ui;
     FiguresScene* getCurrentScene();
     QList<FiguresScene*> getAllScenes();

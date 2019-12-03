@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1146</width>
-    <height>631</height>
+    <height>760</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -54,8 +54,8 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>0</width>
-            <height>0</height>
+            <width>13</width>
+            <height>13</height>
            </size>
           </property>
          </spacer>
@@ -94,16 +94,6 @@
               <item>
                <property name="text">
                 <string>Текст в эллипсе</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Правильный треугольник с текстом</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Треугольник</string>
                </property>
               </item>
              </widget>
@@ -157,6 +147,9 @@
             </item>
             <item>
              <widget class="QLineEdit" name="radius_2">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
               <property name="minimumSize">
                <size>
                 <width>140</width>
@@ -184,6 +177,15 @@
             </item>
             <item>
              <widget class="QLineEdit" name="lineEditText">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
                 <width>140</width>
@@ -205,12 +207,37 @@
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Размер шрифта</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="fontSize">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="frame">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>

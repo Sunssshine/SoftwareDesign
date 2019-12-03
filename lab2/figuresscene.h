@@ -18,11 +18,9 @@ class FiguresScene : public QGraphicsScene
 public:
     explicit FiguresScene(QObject *parent = nullptr);
     void setFigureType(QString newFigureType);
-    void setFigureSideLength(int newLength);
     void setFigureRadius1(int newRadius);
     void setFigureRadius2(int newRadius);
-    void setFigureRoundedRadius(int newRadius);
-    void setFigureText(int fontSz);
+    void setFigureFontSize(int fontSz);
     void setFigureText(QString newText);
     void popFigure();
     void clearSFiguresScene();
@@ -35,14 +33,11 @@ private:
     Ui::FiguresScene *ui;
     QGraphicsScene *scene;     // Объявляем графическую сцену
     QString typeFigure = "circle";
-    int figureSideLength = 150;
     int radius_1 = 100;
     int radius_2 = 80;
-    int figureRoundedRadius = 40;
     int fontSize = 12;
     QString figureText = "\"\"";
     Shape* shape;
-//    PriorityQueue<Shape*> figuresQueue;
     std::queue<Shape*> figuresQueue;
     int figuresCount = 0;
 
