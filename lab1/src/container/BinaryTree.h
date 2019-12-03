@@ -1,11 +1,8 @@
-//
-// Created by dmo on 05.09.2019.
-//
-
 #ifndef SOFTWARE_DESIGN_BINARYTREE_H
 #define SOFTWARE_DESIGN_BINARYTREE_H
 
 #include <iostream>
+#include <queue>
 #include "TreeNode.h"
 #include "../exceptions/EmpyErrorBT.h"
 #include "BinaryTreeIterator.h"
@@ -16,16 +13,18 @@ class BinaryTree {
 
     void print_klp_(T *node);
 public:
+	BinaryTree();
     explicit BinaryTree(T *base);
 
     BinaryTreeIterator<T> iterator(){
         return BinaryTreeIterator<T>(*this);
     }
 
-    T* root() const { return root_; }
+    T *root() const { return root_; }
     void print_klp();
     void clear(T* node);
     void clear();
+	void push(T *);
     ~BinaryTree();
 };
 
@@ -35,6 +34,47 @@ BinaryTree<T>::BinaryTree(T *base) {
         root_ = base;
     else
         throw EmptyErrorBT("pointer is empty");
+}
+
+template <typename T>
+BinaryTree<T>::BinaryTree() {
+	root_ = nullptr;
+}
+
+template <typename T>
+void BinaryTree<T>::push(T *elem) {
+	if (root_) {
+		std::queue<T*> current;
+		current.push(root_);
+		size_t queue_sz = 1;
+		while (queue_sz && (queue_sz & (queue_sz - 1)) == 0) {
+			std::queue<T*> next;
+			while (current.size()) {
+				auto el = current.front();
+				current.pop();
+				if (el->left()) {
+					next.push(el->left());
+				}
+				else { 
+					el->left(elem);
+					return;
+				}
+				if (el->right()) {
+					next.push(el->right());
+				}
+				else
+				{
+					el->right(elem);
+					return;
+				}
+			}
+			queue_sz = next.size();
+			current = next;
+		}
+	}
+	else {
+		root_ = elem;
+	}
 }
 
 template <typename T>
@@ -66,12 +106,15 @@ void BinaryTree<T>::clear(T* node)
     if (node->right()){
         clear(node->right());
     }
-    delete node;
+	delete node;
 }
 
 template <typename T>
 void BinaryTree<T>::clear()
 {
+	if(root_)
+		delete root_
+	root_ = nullptr;
     clear(root_);
 }
 
@@ -79,7 +122,6 @@ void BinaryTree<T>::clear()
 template <typename T>
 BinaryTree<T>::~BinaryTree(){
     clear(root_);
-    root_ = nullptr;
 }
 
 

@@ -38,6 +38,7 @@ info/tasks
 docs
 build
 
+.vs
 object_script.*
 KPO_2.pro.*
 Makefile*

@@ -86,7 +86,6 @@ void TreeNode<T>::right(TreeNode *right) {
 
 template<typename T>
 TreeNode<T>::~TreeNode() {
-    delete(elem_);
 }
 
 #endif //SOFTWARE_DESIGN_TREENODE_H

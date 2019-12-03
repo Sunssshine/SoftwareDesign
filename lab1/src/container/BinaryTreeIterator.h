@@ -6,6 +6,7 @@
 #define SOFTWARE_DESIGN_BINARYTREEITERATOR_H
 
 #include <stack>
+#include <queue>
 #include "../exceptions/InvalidIteratorBT.h"
 #include "BinaryTree.h"
 
@@ -14,7 +15,8 @@ class BinaryTree;
 
 template <typename T>
 class BinaryTreeIterator {
-    std::stack<T *> stack;
+    //std::stack<T *> stack; // for depth root, left, right
+	std::queue<T*> stack; // for width root, left, right
 public:
     explicit BinaryTreeIterator(T *root);
     explicit BinaryTreeIterator(const BinaryTree<T> &tree);
@@ -43,18 +45,36 @@ bool BinaryTreeIterator<T>::has_next() {
     return !stack.empty();
 }
 
+
+//template<typename T>
+//T *BinaryTreeIterator<T>::next() {	//depth root, left, right
+//    T *node = stack.top();
+//    stack.pop();
+//
+//    if (node->right())
+//        stack.push(node->right());
+//
+//    if (node->left())
+//        stack.push(node->left());
+//    return node;
+//}
+
+
 template<typename T>
-T *BinaryTreeIterator<T>::next() {
-    T *node = stack.top();
-    stack.pop();
+T* BinaryTreeIterator<T>::next() {		//width root, left, right
+	T* node = stack.front();
+	stack.pop();
 
-    if (node->right())
-        stack.push(node->right());
+	if (node->left())
+		stack.push(node->left());
 
-    if (node->left())
-        stack.push(node->left());
-    return node;
+	if (node->right())
+		stack.push(node->right());
+
+	return node;
 }
+
+
 
 
 #endif //SOFTWARE_DESIGN_BINARYTREEITERATOR_H
