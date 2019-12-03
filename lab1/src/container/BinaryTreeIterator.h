@@ -15,14 +15,13 @@ class BinaryTree;
 
 template <typename T>
 class BinaryTreeIterator {
-    //std::stack<T *> stack; // for depth root, left, right
 	std::queue<T*> stack; // for width root, left, right
 public:
     explicit BinaryTreeIterator(T *root);
     explicit BinaryTreeIterator(const BinaryTree<T> &tree);
 
     bool has_next();
-    T *next();
+    T next();
 
 };
 
@@ -61,7 +60,7 @@ bool BinaryTreeIterator<T>::has_next() {
 
 
 template<typename T>
-T* BinaryTreeIterator<T>::next() {		//width root, left, right
+T BinaryTreeIterator<T>::next() {		//width root, left, right
 	T* node = stack.front();
 	stack.pop();
 
@@ -71,7 +70,7 @@ T* BinaryTreeIterator<T>::next() {		//width root, left, right
 	if (node->right())
 		stack.push(node->right());
 
-	return node;
+	return *node;
 }
 
 

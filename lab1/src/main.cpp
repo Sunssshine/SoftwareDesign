@@ -35,8 +35,34 @@ int main(int argc, char **argv)
         BinaryTreeIterator<nodeType> iter = tree.iterator();
 
         while(iter.has_next()) {
-            std::cout << iter.next()->elem() << std::endl;
+            std::cout << iter.next().elem() << ' ';
         }
+		auto el = tree.pop();
+		std::cout << std::endl << el->elem() << std::endl;
+		
+		iter = tree.iterator();
+		while (iter.has_next()) {
+			std::cout << iter.next().elem() << ' ';
+		}
+		el = tree.pop();
+		std::cout << std::endl << el->elem() << std::endl;
+
+		iter = tree.iterator();
+		while (iter.has_next()) {
+			std::cout << iter.next().elem() << ' ';
+		}
+		el = tree.pop();
+		std::cout << std::endl << el->elem() << std::endl;
+		
+		iter = tree.iterator();
+		while (iter.has_next()) {
+			std::cout << iter.next().elem() << ' ';
+		}
+
+		el = tree.pop();
+
+		tree.clear();
+		
     }
     catch(EmptyErrorBT &e)
     {

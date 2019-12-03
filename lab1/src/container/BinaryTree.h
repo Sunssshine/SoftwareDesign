@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <queue>
+#include <deque>
 #include "TreeNode.h"
-#include "../exceptions/EmpyErrorBT.h"
+#include "../exceptions/EmptyErrorBT.h"
 #include "BinaryTreeIterator.h"
 
 template <typename T>
@@ -16,15 +17,15 @@ public:
 	BinaryTree();
     explicit BinaryTree(T *base);
 
-    BinaryTreeIterator<T> iterator(){
-        return BinaryTreeIterator<T>(*this);
-    }
+	BinaryTreeIterator<T> iterator();
 
-    T *root() const { return root_; }
+	T* root() const;
     void print_klp();
     void clear(T* node);
     void clear();
+
 	void push(T *);
+	T* pop();
     ~BinaryTree();
 };
 
@@ -39,6 +40,16 @@ BinaryTree<T>::BinaryTree(T *base) {
 template <typename T>
 BinaryTree<T>::BinaryTree() {
 	root_ = nullptr;
+}
+
+template <typename T>
+BinaryTreeIterator<T> BinaryTree<T>::iterator(){
+	return BinaryTreeIterator<T>(*this);
+}
+
+template <typename T>
+T* BinaryTree<T>::root() const { 
+	return root_; 
 }
 
 template <typename T>
@@ -78,6 +89,53 @@ void BinaryTree<T>::push(T *elem) {
 }
 
 template <typename T>
+T* BinaryTree<T>::pop() {
+	if (root_) {
+		if (root_->left()) {
+			std::deque<T*> current;
+			current.push_back(root_);
+			while (true)
+			{
+				std::deque<T*> previous;
+				previous = current;
+				current.clear();
+				for (auto el : previous) {
+					if (el->left()) {
+						current.push_back(el->left());
+					}
+					if (el->right()) {
+						current.push_back(el->right());
+					}
+				}
+				size_t previous_sz = previous.size();
+				size_t current_sz = current.size();
+
+				if (current_sz != 2 * previous_sz) {
+					if (current_sz % 2) {
+						previous[current_sz / 2]->left() = nullptr;
+					}
+					else {
+						previous[current_sz / 2]->right() = nullptr;
+					}
+					return current.back();
+				}
+				else if (!(current.front()->left())) {
+					previous.back()->right() = nullptr;
+					return current.back();
+				}
+			}
+		}
+		else {
+			auto for_return = root_;
+			root_ = nullptr;
+			return for_return;
+		}
+	}
+	else
+		throw EmptyErrorBT("pop from empty tree");
+}
+
+template <typename T>
 void BinaryTree<T>::print_klp_(T* node)
 {
     std::cout << node->elem() << ' ';
@@ -102,9 +160,13 @@ void BinaryTree<T>::clear(T* node)
         return;
     if (node->left()) {
         clear(node->left());
+		auto t = node->left();
+		t = nullptr;
     }
     if (node->right()){
         clear(node->right());
+		auto t = node->right();
+		t = nullptr;
     }
 	delete node;
 }
@@ -112,16 +174,16 @@ void BinaryTree<T>::clear(T* node)
 template <typename T>
 void BinaryTree<T>::clear()
 {
-	if(root_)
-		delete root_
+	if (root_)
+		clear(root_);
 	root_ = nullptr;
-    clear(root_);
 }
 
 
 template <typename T>
 BinaryTree<T>::~BinaryTree(){
     clear(root_);
+	root_ = nullptr;
 }
 
 
