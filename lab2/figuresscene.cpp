@@ -9,6 +9,7 @@
 #include "TextInEllipse.h"
 #include <QMouseEvent>
 #include <QGraphicsSceneEvent>
+#include "mainwindow.h"
 
 FiguresScene::FiguresScene(QObject *parent)
     : QGraphicsScene(parent) {
@@ -89,8 +90,41 @@ void FiguresScene::deserialize(QDataStream &stream) {
     for (size_t i = 0; i < figuresToLoadCount; i++) {
        Shape* figure = Shape::loadFigure(stream);
 
+    	
         if (figure) {
             this->addItem(figure);
+			auto figureType = "";
+			auto figureRadius1 = 0;
+			auto figureRadius2 = 0;
+			QString figureText;
+			auto figureFontSize = 0;
+        	if (auto textInEllipse = dynamic_cast<TextInEllipse*>(figure)) {
+				figureType = "textInEllipse";
+				figureRadius1 = textInEllipse->getRadius1();
+				figureRadius2 = textInEllipse->getRadius2();
+				figureText = textInEllipse->getText();
+				figureFontSize = textInEllipse->getFontSize();
+        	}
+			else if (auto text = dynamic_cast<Text*>(figure)) {
+				figureType = "text";
+				figureText = text->getText();
+				figureFontSize = text->getFontSize();
+			}
+			else if (auto ellipse = dynamic_cast<Ellipse*>(figure)) {
+				figureType = "ellipse";
+				figureRadius1 = ellipse->getRadius1();
+				figureRadius2 = ellipse->getRadius2();
+			}
+			else if (auto circle = dynamic_cast<Circle*>(figure)) {
+				figureType = "circle";
+				figureRadius1 = circle->getRadius();
+				figureRadius2 = circle->getRadius();
+			}
+			setFigureType(figureType);
+			setFigureRadius1(figureRadius1);
+			setFigureRadius2(figureRadius2);
+			setFigureText(figureText);
+			setFigureFontSize(figureFontSize);
             figuresCount++;
             figuresQueue.push(figure);
         }

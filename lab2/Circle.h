@@ -9,7 +9,7 @@ public:
     void saveToStream(QDataStream& stream) const override;
 
     void print(std::ostream& out) override;
-
+	double getRadius();
 protected:
     double radius;
 private:

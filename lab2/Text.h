@@ -12,6 +12,9 @@ public:
 
     void print(std::ostream& out) override;
 
+	QString getText();
+	int getFontSize();
+	
 protected:
     QString text;
     std::size_t length;

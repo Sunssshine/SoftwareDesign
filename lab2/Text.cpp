@@ -25,6 +25,16 @@ void Text::print(std::ostream& out){
     out<<"Размер шрифта "<< fontSize<<"\n";
     out<<"Текст "<< text.toStdString() <<"\n";
 }
+
+QString Text::getText() {
+	return text;
+}
+
+int Text::getFontSize() {
+	return fontSize;
+}
+
+
 void Text::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 //    painter->setPen(Qt::white);
 //    painter->setBrush(Qt::white);
