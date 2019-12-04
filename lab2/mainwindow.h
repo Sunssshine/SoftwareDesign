@@ -27,7 +27,9 @@ private slots:
     void on_radius_1_textChanged(const QString &arg1);
     void on_radius_2_textChanged(const QString &arg1);
 
-    void on_pushButton_clicked();
+    void on_deleteButton_clicked();
+
+    void on_clearScene_clicked();
 
     void on_newSceneButton_clicked();
 

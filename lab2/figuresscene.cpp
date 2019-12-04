@@ -36,7 +36,6 @@ void FiguresScene::setFigureRadius2(int newRadius) {
     radius_2 = newRadius;
 }
 
-
 void FiguresScene::setFigureFontSize(int fontSz) {
     if (fontSz <= 12)
         fontSz = 12;
@@ -49,57 +48,103 @@ void FiguresScene::setFigureText(QString newText) {
     }
     figureText = newText;
 }
+
+QString FiguresScene::getFigureType() const {
+    return typeFigure;
+}
+
+//void FiguresScene::popFigure() {
+//    try {
+//        auto item = this->itemAt(figuresQueue.front()->getCentCoords().x, figuresQueue.front()->getCentCoords().y, QTransform::fromScale(1, 1));
+//        this->removeItem(item);
+//        figuresQueue.pop();
+//        figuresCount--;
+//    } catch (std::exception& e) {
+//        std::cout << e.what() << std::endl;
+//    }
+//}
+
+//void FiguresScene::serialize(QDataStream &stream) {
+//    stream << figuresQueue.size();
+//    while (figuresQueue.size()) {
+//        Shape *fig = figuresQueue.front();
+//        stream << *fig;
+//        popFigure();
+//    }
+//}
+
+//void FiguresScene::clearSFiguresScene() {
+//    this->clear();
+//    while (figuresQueue.size()) {
+//        figuresQueue.pop();
+//    }
+//}
+
+//void FiguresScene::deserialize(QDataStream &stream) {
+//    std::size_t figuresToLoadCount;
+//    stream >> figuresToLoadCount;
+//    if (figuresToLoadCount > 0) {
+//        clearSFiguresScene();
+//    } else {
+//        return;
+//    }
+//    for (size_t i = 0; i < figuresToLoadCount; i++) {
+//       Shape* figure = Shape::loadFigure(stream);
+//        if (figure) {
+//            this->addItem(figure);
+//            figuresCount++;
+//            figuresQueue.push(figure);
+//        }
+//    }
+//}
+
 void FiguresScene::popFigure() {
     try {
-        auto item = this->itemAt(figuresQueue.front()->getCentCoords().x, figuresQueue.front()->getCentCoords().y, QTransform::fromScale(1, 1));
+        auto fig = figuresContainer.pop()->elem();
+        auto item = this->itemAt(fig->getCentCoords().x, fig->getCentCoords().y, QTransform::fromScale(1, 1));
         this->removeItem(item);
-        figuresQueue.pop();
         figuresCount--;
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-
 }
+
 void FiguresScene::serialize(QDataStream &stream) {
-    stream << figuresQueue.size();
-    while (figuresQueue.size()) {
-        Shape *fig = figuresQueue.front();
+    size_t cont_sz = figuresContainer.size();
+    std::cout << "count of figures: "<< cont_sz << std::endl;
+    stream << cont_sz;
+    while (cont_sz--) {
+        Shape *fig = figuresContainer.pop()->elem();
         stream << *fig;
-        popFigure();
     }
-
 }
+
 void FiguresScene::clearSFiguresScene() {
     this->clear();
-
-    while (figuresQueue.size()) {
-        figuresQueue.pop();
+    size_t cont_sz = figuresContainer.size();
+    while (cont_sz--) {
+        figuresContainer.pop();
     }
 }
+
 void FiguresScene::deserialize(QDataStream &stream) {
     std::size_t figuresToLoadCount;
     stream >> figuresToLoadCount;
-
     if (figuresToLoadCount > 0) {
         clearSFiguresScene();
     } else {
         return;
     }
-
     for (size_t i = 0; i < figuresToLoadCount; i++) {
        Shape* figure = Shape::loadFigure(stream);
-
         if (figure) {
             this->addItem(figure);
             figuresCount++;
-            figuresQueue.push(figure);
+            figuresContainer.push(new nodeType(figure));
         }
     }
 }
 
-QString FiguresScene::getFigureType() const {
-    return typeFigure;
-}
 
 void FiguresScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
     auto item = this->itemAt(event->scenePos(), QTransform::fromScale(1, 1));
@@ -118,6 +163,7 @@ void FiguresScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
         shape->setPos(event->scenePos());
         this->addItem(shape);
         figuresCount++;
-        figuresQueue.push(shape);
+//        figuresQueue.push(shape);
+        figuresContainer.push(new nodeType(shape));
     }
 }

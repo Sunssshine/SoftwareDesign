@@ -142,7 +142,7 @@ void MainWindow::on_fontSize_textChanged(const QString &arg1){
     }
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_deleteButton_clicked()
 {
     auto scene = getCurrentScene();
     scene->popFigure();
@@ -186,10 +186,13 @@ void MainWindow::on_openAction_triggered()
             QDataStream input(&file);
             currentScene->deserialize(input);
         }
-
         file.close();
 }
 
+void MainWindow::on_clearScene_clicked(){
+    auto currentScene = getCurrentScene();
+    currentScene->clearSFiguresScene();
+}
 void MainWindow::on_saveAction_triggered()
 {
     auto currentScene = getCurrentScene();

@@ -31,7 +31,7 @@ public:
 protected:
     Point cent = Point(0,0);
     int ang = 0;
-    Colour col = Colour(255,255,0);
+    Colour col = Colour(0,255,255);
     std:: vector<Point> pts;
     QRectF figureRect;
     QRectF boundingRect() const override;

@@ -257,6 +257,13 @@
              </spacer>
             </item>
             <item>
+             <widget class="QPushButton" name="clearScene">
+              <property name="text">
+               <string>Очистить схему</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="newSceneButton">
               <property name="minimumSize">
                <size>
@@ -276,7 +283,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="deleteButton">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -310,7 +317,7 @@
      <x>0</x>
      <y>0</y>
      <width>1146</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

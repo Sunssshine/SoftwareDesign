@@ -58,8 +58,9 @@ public:
     QLineEdit *fontSize;
     QHBoxLayout *horizontalLayout_9;
     QSpacerItem *horizontalSpacer;
+    QPushButton *clearScene;
     QPushButton *newSceneButton;
-    QPushButton *pushButton;
+    QPushButton *deleteButton;
     QMenuBar *menubar;
     QMenu *menu;
     QStatusBar *statusbar;
@@ -208,6 +209,11 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer);
 
+        clearScene = new QPushButton(centralwidget);
+        clearScene->setObjectName(QString::fromUtf8("clearScene"));
+
+        horizontalLayout_9->addWidget(clearScene);
+
         newSceneButton = new QPushButton(centralwidget);
         newSceneButton->setObjectName(QString::fromUtf8("newSceneButton"));
         newSceneButton->setMinimumSize(QSize(0, 25));
@@ -215,12 +221,12 @@ public:
 
         horizontalLayout_9->addWidget(newSceneButton);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMinimumSize(QSize(0, 25));
-        pushButton->setMaximumSize(QSize(140, 16777215));
+        deleteButton = new QPushButton(centralwidget);
+        deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+        deleteButton->setMinimumSize(QSize(0, 25));
+        deleteButton->setMaximumSize(QSize(140, 16777215));
 
-        horizontalLayout_9->addWidget(pushButton);
+        horizontalLayout_9->addWidget(deleteButton);
 
 
         verticalLayout_10->addLayout(horizontalLayout_9);
@@ -237,7 +243,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1146, 21));
+        menubar->setGeometry(QRect(0, 0, 1146, 26));
         menu = new QMenu(menubar);
         menu->setObjectName(QString::fromUtf8("menu"));
         MainWindow->setMenuBar(menubar);
@@ -271,8 +277,9 @@ public:
         label_4->setText(QApplication::translate("MainWindow", "\320\222\320\265\321\200\321\202\320\270\320\272\320\260\320\273\321\214\320\275\321\213\320\271 \321\200\320\260\320\264\320\270\321\203\321\201 \321\215\320\273\320\273\320\270\320\277\321\201\320\260", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "\320\242\320\265\320\272\321\201\321\202", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "\320\240\320\260\320\267\320\274\320\265\321\200 \321\210\321\200\320\270\321\204\321\202\320\260", nullptr));
+        clearScene->setText(QApplication::translate("MainWindow", "\320\236\321\207\320\270\321\201\321\202\320\270\321\202\321\214 \321\201\321\205\320\265\320\274\321\203", nullptr));
         newSceneButton->setText(QApplication::translate("MainWindow", "\320\235\320\276\320\262\320\260\321\217 \321\201\321\206\320\265\320\275\320\260", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \321\204\320\270\320\263\321\203\321\200\321\203", nullptr));
+        deleteButton->setText(QApplication::translate("MainWindow", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \321\204\320\270\320\263\321\203\321\200\321\203", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "\320\244\320\260\320\271\320\273", nullptr));
     } // retranslateUi
 

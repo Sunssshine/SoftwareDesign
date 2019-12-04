@@ -5,7 +5,10 @@
 #include <QGraphicsScene>
 #include "Shape.h"
 //#include "priorityQueueContainer.h"
+#include "BinaryTree.h"
 #include <queue>
+
+typedef TreeNode<Shape *> nodeType;
 
 namespace Ui {
 class FiguresScene;
@@ -38,7 +41,8 @@ private:
     int fontSize = 12;
     QString figureText = "\"\"";
     Shape* shape;
-    std::queue<Shape*> figuresQueue;
+//    std::queue<Shape*> figuresQueue;
+    BinaryTree<nodeType> figuresContainer;
     int figuresCount = 0;
 
 protected:

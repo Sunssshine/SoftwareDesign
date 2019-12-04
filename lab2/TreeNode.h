@@ -7,28 +7,27 @@
 
 #include <utility>
 
-
 template<typename T>
 class TreeNode{
     T elem_;
     TreeNode *left_;
     TreeNode *right_;
 public:
+	
     explicit TreeNode(T base);
     TreeNode(T base, TreeNode *elem, bool is_right = false);
     TreeNode(T base, TreeNode* left, TreeNode* right);
 
-
-
+	
     T &elem();
     const T &elem() const;
     void elem(T base);
 
-    TreeNode *left();
+    TreeNode *&left();
     void left(T left);
     void left(TreeNode *left);
 
-    TreeNode *right();
+    TreeNode *&right();
     void right(T right);
     void right(TreeNode *right);
      ~TreeNode();
@@ -64,7 +63,7 @@ template<typename T>
 void TreeNode<T>::elem(T base) { elem_ = base; }
 
 template<typename T>
-TreeNode<T> *TreeNode<T>::left() { return left_; }
+TreeNode<T> *&TreeNode<T>::left() { return left_; }
 
 template<typename T>
 void TreeNode<T>::left(T left) { left_ = new TreeNode<T>(left); }
@@ -73,7 +72,7 @@ template<typename T>
 void TreeNode<T>::left(TreeNode *left) { left_ = left;}
 
 template<typename T>
-TreeNode<T> *TreeNode<T>::right() { return right_; }
+TreeNode<T> *&TreeNode<T>::right() { return right_; }
 
 template<typename T>
 void TreeNode<T>::right(T right) { right_ = new TreeNode<T>(right); }
@@ -84,8 +83,6 @@ void TreeNode<T>::right(TreeNode *right) {
 }
 
 template<typename T>
-TreeNode<T>::~TreeNode() {
-    delete(elem_);
-}
+TreeNode<T>::~TreeNode() {}
 
 #endif //SOFTWARE_DESIGN_TREENODE_H
