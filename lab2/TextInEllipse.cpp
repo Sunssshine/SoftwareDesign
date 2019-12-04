@@ -10,18 +10,13 @@ TextInEllipse::TextInEllipse(double x, double y, double r_1, double r_2, const Q
     figureRect = QRectF(-r_1, -r_2, 2*r_1, 2*r_2);
 }
 TextInEllipse::TextInEllipse(QDataStream &stream)
-    : Shape(stream) {
-    stream >> radius_1;
-    stream >> radius_2;
-    stream >> text;
-    stream >> fontSize;
-    length = text.length();
+    : Shape(stream), Ellipse(stream), Text(stream) {
     std::cout << radius_1 << ' ' << radius_2 << ' ' << text.toStdString() << ' ' << fontSize << std::endl;
 }
 
 
 void TextInEllipse::saveToStream(QDataStream &stream) const {
-    stream << QString::fromStdString("textInEllipse");
+    stream << QString("textInEllipse");
     stream << figureRect;
     stream << QPoint(static_cast<int>(cent.x), static_cast<int>(cent.y));
     stream << scenePos();
